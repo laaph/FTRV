@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		67352C8317F28BD900552CF8 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 67352C8217F28BD900552CF8 /* main.c */; };
 		67352C8517F28BD900552CF8 /* Curse.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 67352C8417F28BD900552CF8 /* Curse.1 */; };
+		67352C8C17F2904000552CF8 /* libncurses.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 67352C8B17F2904000552CF8 /* libncurses.dylib */; };
+		67352C8F17F2A74100552CF8 /* utils.c in Sources */ = {isa = PBXBuildFile; fileRef = 67352C8E17F2A74100552CF8 /* utils.c */; };
+		67352C9217F4AA6000552CF8 /* drawing.c in Sources */ = {isa = PBXBuildFile; fileRef = 67352C9117F4AA5F00552CF8 /* drawing.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -28,6 +31,12 @@
 		67352C7F17F28BD900552CF8 /* Curse */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Curse; sourceTree = BUILT_PRODUCTS_DIR; };
 		67352C8217F28BD900552CF8 /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
 		67352C8417F28BD900552CF8 /* Curse.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = Curse.1; sourceTree = "<group>"; };
+		67352C8B17F2904000552CF8 /* libncurses.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libncurses.dylib; path = usr/lib/libncurses.dylib; sourceTree = SDKROOT; };
+		67352C8D17F2A63700552CF8 /* playerdata.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = playerdata.h; sourceTree = "<group>"; };
+		67352C8E17F2A74100552CF8 /* utils.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = utils.c; sourceTree = "<group>"; };
+		67352C9017F2A78C00552CF8 /* utils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = utils.h; sourceTree = "<group>"; };
+		67352C9117F4AA5F00552CF8 /* drawing.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = drawing.c; sourceTree = "<group>"; };
+		67352C9317F4AA7000552CF8 /* drawing.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = drawing.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,6 +44,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				67352C8C17F2904000552CF8 /* libncurses.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -44,6 +54,7 @@
 		67352C7617F28BD900552CF8 = {
 			isa = PBXGroup;
 			children = (
+				67352C8B17F2904000552CF8 /* libncurses.dylib */,
 				67352C8117F28BD900552CF8 /* Curse */,
 				67352C8017F28BD900552CF8 /* Products */,
 			);
@@ -61,6 +72,11 @@
 			isa = PBXGroup;
 			children = (
 				67352C8217F28BD900552CF8 /* main.c */,
+				67352C9117F4AA5F00552CF8 /* drawing.c */,
+				67352C9317F4AA7000552CF8 /* drawing.h */,
+				67352C8D17F2A63700552CF8 /* playerdata.h */,
+				67352C8E17F2A74100552CF8 /* utils.c */,
+				67352C9017F2A78C00552CF8 /* utils.h */,
 				67352C8417F28BD900552CF8 /* Curse.1 */,
 			);
 			path = Curse;
@@ -118,6 +134,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				67352C8317F28BD900552CF8 /* main.c in Sources */,
+				67352C9217F4AA6000552CF8 /* drawing.c in Sources */,
+				67352C8F17F2A74100552CF8 /* utils.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

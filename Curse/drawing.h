@@ -16,5 +16,6 @@ void introscreen();
 void set_colors();
 void clearscreen();
 void drawroomnumbers(int y, int x);
+void drawstats();
 
 #endif

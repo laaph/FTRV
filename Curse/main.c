@@ -19,7 +19,6 @@
 struct character_info random_character();
 static void finish(int a);
 void new_game();
-void update_stats();
 struct ship_info setup_ship();
 
 
@@ -69,26 +68,6 @@ static void finish(int a)
     exit(0);
 }
 
-
-void update_stats()
-{
-    int left = 0;
-    for(int i = 0; i < num_chars; i++)
-    {
-        move(i, left);
-        attrset(COLOR_PAIR(characters[i].color));
-        addch('@');
-        attrset(COLOR_PAIR(7));
-        addch(' ');
-        addstr(characters[i].name);
-        char t[4];
-        sprintf(t, "%i", characters[i].health);
-        move(i, left + 14);
-        addstr(t);
-    }
-        
-}
-
 void new_game()
 {
     clearscreen();
@@ -115,7 +94,7 @@ void new_game()
     drawspaceship (4, 18);
     drawcharacters(4, 18);
     drawroomnumbers(4, 18);
-    update_stats();
+    drawstats();
     refresh();
     
     getch();

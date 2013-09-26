@@ -149,3 +149,22 @@ void clearscreen()
     while(num--)
         addch(' ');
 }
+
+void drawstats()
+{
+    int left = 0;
+    for(int i = 0; i < num_chars; i++)
+    {
+        move(i, left);
+        attrset(COLOR_PAIR(characters[i].color));
+        addch('@');
+        attrset(COLOR_PAIR(7));
+        addch(' ');
+        addstr(characters[i].name);
+        char t[4];
+        sprintf(t, "%i", characters[i].health);
+        move(i, left + 14);
+        addstr(t);
+    }
+    
+}

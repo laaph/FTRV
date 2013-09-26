@@ -15,5 +15,6 @@ void drawflame(int y, int x, int flamesize);
 void introscreen();
 void set_colors();
 void clearscreen();
+void drawroomnumbers(int y, int x);
 
 #endif

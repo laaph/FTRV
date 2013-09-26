@@ -104,6 +104,8 @@ void new_game()
 
     
     num_chars = 2;
+    money = 1000;
+    player_ship = setup_ship();
     
     characters[0] = random_character();
     characters[1] = random_character();
@@ -112,6 +114,7 @@ void new_game()
     clearscreen();
     drawspaceship (4, 18);
     drawcharacters(4, 18);
+    drawroomnumbers(4, 18);
     update_stats();
     refresh();
     
@@ -124,10 +127,31 @@ struct ship_info setup_ship()
     struct ship_info s;
     s.health = 100;
     strcpy(s.name, "One Bad Rat");
+    // Why do I hard code it all out like this?
     s.roomLocationX[0] = 28;
     s.roomLocationY[0] = 4;
-    s.rooms[0] = EMPTY;
-    // Finish the rest of the spaceshipinfo
+    s.roomLocationX[1] = 28;
+    s.roomLocationY[1] = 7;
+    s.roomLocationX[2] = 24;
+    s.roomLocationY[2] = 4;
+    s.roomLocationX[3] = 24;
+    s.roomLocationY[3] = 7;
+    s.roomLocationX[4] = 20;
+    s.roomLocationY[4] = 4;
+    s.roomLocationX[5] = 20;
+    s.roomLocationY[5] = 7;
+    s.roomLocationX[6] = 16;
+    s.roomLocationY[6] = 4;
+    s.roomLocationX[7] = 16;
+    s.roomLocationY[7] = 7;
+    s.rooms[0] = PILOT;
+    s.rooms[1] = SENSORS;
+    s.rooms[2] = LASER;
+    s.rooms[3] = EMPTY;
+    s.rooms[4] = EMPTY;
+    s.rooms[5] = EMPTY;
+    s.rooms[6] = EMPTY;
+    s.rooms[7] = EMPTY;
     
     return s;
 }

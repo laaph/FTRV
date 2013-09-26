@@ -73,6 +73,24 @@ void drawcharacters(int y, int x)
         }
     }
 }
+void drawroomnumbers(int y, int x)
+{
+    for(int i = 0; i < 8; i++)
+    {
+        int xx = x + player_ship.roomLocationX[i];
+        int yy = y + player_ship.roomLocationY[i];
+        
+        if(xx < 0 || yy < 0 || xx > 79 || yy > 23)
+        {
+            //  printf("nothing drawn.\n");
+        }
+        else
+        {
+            move(yy, xx);
+            addch(i + '1');
+        }
+    }
+}
 
 void introscreen()
 {

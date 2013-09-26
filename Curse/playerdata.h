@@ -11,7 +11,7 @@
 
 enum room_info
 {
-    PILOT, SENSORS, BEAM, LASER, MISSILE, TELEPORT, MEDBAY, EMPTY
+    PILOT, SENSORS, BEAM, LASER, MISSILE, TELEPORT, MEDBAY, EMPTY, STORAGE
 };
 
 struct character_info
@@ -29,6 +29,7 @@ struct ship_info
     int roomLocationX[8];
     int roomLocationY[8];
     int health;
+    int shield;
     char name[52];
 };
 

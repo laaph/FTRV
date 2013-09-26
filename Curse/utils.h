@@ -10,7 +10,6 @@
 #define Curse_utils_h
 
 char * randomname();
-void clearscreen();
 
 
 #endif

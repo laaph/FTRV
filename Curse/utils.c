@@ -7,7 +7,6 @@
 //
 
 #include <stdlib.h>
-#include <ncurses.h>
 
 char * randomname()
 {
@@ -24,11 +23,4 @@ char * randomname()
             return "Chuck";
             break;
     }
-}
-void clearscreen()
-{
-    int num = 80*24;
-    move(0, 0);
-    while(num--)
-        addch(' ');
 }

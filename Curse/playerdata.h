@@ -37,10 +37,10 @@ struct character_info characters[8]; // Max characters
 struct ship_info      player_ship;
        int            money;
 
-int spaceshipsizey = 13;
-int spaceshipsizex = 30;
+extern int spaceshipsizey;
+extern int spaceshipsizex;
 
-char spaceship_pic[13][30] =
+extern char spaceship_pic[13][30]; /* =
 {
     "----------------\\            ",
     " \\               \\           ",
@@ -55,7 +55,7 @@ char spaceship_pic[13][30] =
     "  /               /          ",
     " /               /           ",
     "----------------/            "
-};
+}; */
 
 
 #endif

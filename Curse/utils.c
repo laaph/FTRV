@@ -10,7 +10,7 @@
 
 char * randomname()
 {
-    int num_names = 3;
+    int num_names = 4;
     
     switch (arc4random_uniform(num_names))
     {
@@ -19,8 +19,14 @@ char * randomname()
             break;
         case 1:
             return "Leila";
+        case 2:
+            return "Sebastian";
         default:
             return "Chuck";
             break;
     }
+}
+char * starname(int system_number)
+{
+    return "Riga";
 }

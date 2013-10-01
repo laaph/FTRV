@@ -10,6 +10,7 @@
 #define Curse_utils_h
 
 char * randomname();
+char * starname(int system_number);
 
 
 #endif

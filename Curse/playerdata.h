@@ -37,6 +37,8 @@ struct ship_info
 struct character_info characters[8]; // Max characters
 struct ship_info      player_ship;
        int            money;
+       int            current_system;
+
 
 extern int spaceshipsizey;
 extern int spaceshipsizex;

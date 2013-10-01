@@ -11,6 +11,7 @@
 #include <signal.h>
 #include <string.h>
 #include <stdio.h>
+#include <unistd.h>
 
 #include "utils.h"
 #include "drawing.h"
@@ -20,12 +21,12 @@ struct character_info random_character();
 static void finish(int a);
 void new_game();
 struct ship_info setup_ship();
+void zoom_spaceship();
 
-
-int main(int argc, const char * argv[])
+int main(int argc, char * argv[])
 {
 
-    // insert code here...
+    int opt; int skiptonew;
     
     signal(SIGINT, finish);
     WINDOW * w = initscr();
@@ -42,6 +43,25 @@ int main(int argc, const char * argv[])
         set_colors();
     }
     
+    while ((opt = getopt(argc, argv, "n")) != -1)
+    {
+        switch (opt)
+        {
+            case 'n':
+                skiptonew = 1;
+                break;
+            default: /* '?' */
+                fprintf(stderr, "Usage: %s [-n]\n",
+                        argv[0]);
+                exit(EXIT_FAILURE);
+        }
+    }
+    
+    if(skiptonew)
+    {
+        new_game();
+    }
+    
     introscreen();
     
     while(1)
@@ -49,6 +69,7 @@ int main(int argc, const char * argv[])
         int c = getch();
         if(c == 'n' || c == 'N')
         {
+            zoom_spaceship();
             new_game();
         }
         if(c == 'q' || c == 'Q')
@@ -68,7 +89,7 @@ static void finish(int a)
     exit(0);
 }
 
-void new_game()
+void zoom_spaceship()
 {
     clearscreen();
     for(int i = 1; i < 80; i++)
@@ -80,8 +101,11 @@ void new_game()
         addch(' ');
         refresh();
     }
+}
 
-    
+void new_game()
+{
+
     num_chars = 2;
     money = 1000;
     player_ship = setup_ship();
@@ -91,9 +115,9 @@ void new_game()
     characters[1].locationY = 7;
 
     clearscreen();
-    drawspaceship (4, 18);
-    drawcharacters(4, 18);
-    drawroomnumbers(4, 18);
+    drawspaceship (4, 2);
+    drawcharacters(4, 2);
+    drawroomnumbers(4, 2);
     drawstats();
     refresh();
     
@@ -105,6 +129,7 @@ struct ship_info setup_ship()
 {
     struct ship_info s;
     s.health = 100;
+    s.shield = 100;
     strcpy(s.name, "One Bad Rat");
     // Why do I hard code it all out like this?
     s.roomLocationX[0] = 28;

@@ -12,21 +12,22 @@ char * randomname()
 {
     int num_names = 4;
     
-    switch (arc4random_uniform(num_names))
+    char *names[4] =
     {
-        case 0:
-            return "Maximillian";
-            break;
-        case 1:
-            return "Leila";
-        case 2:
-            return "Sebastian";
-        default:
-            return "Chuck";
-            break;
-    }
+        "Maximillian",
+        "Leila",
+        "Sebastian",
+        "Chuck"
+    };
+    
+    return names[arc4random_uniform(num_names)];
+    
 }
 char * starname(int system_number)
 {
-    return "Riga";
+    char *names[1] =
+    {
+        "Riga"
+    };
+    return names[system_number];
 }

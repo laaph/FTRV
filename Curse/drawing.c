@@ -152,6 +152,8 @@ void clearscreen()
 
 void drawstats()
 {
+    char t[80];
+
     int left = 0;
     for(int i = 0; i < num_chars; i++)
     {
@@ -161,10 +163,34 @@ void drawstats()
         attrset(COLOR_PAIR(7));
         addch(' ');
         addstr(characters[i].name);
-        char t[4];
         sprintf(t, "%i", characters[i].health);
         move(i, left + 14);
         addstr(t);
     }
-    
+    sprintf(t, "Ship Hull:    %i", player_ship.health);
+    move(0, left + 20);
+    addstr(t);
+    sprintf(t, "Ship Shields: %i", player_ship.shield);
+    move(1, left + 20);
+    addstr(t);
+    sprintf(t, "Money:          %i", money);
+    move(0, left + 20);
+    addstr(t);
+    sprintf(t, "Current System: %i", player_ship.shield);
+    move(1, left + 20);
+    addstr(t);
+}
+
+void zoom_spaceship()
+{
+    clearscreen();
+    for(int i = 1; i < 80; i++)
+    {
+        delay_output(20);
+        clearscreen();
+        drawspaceship(4, i);
+        move(24,78);
+        addch(' ');
+        refresh();
+    }
 }

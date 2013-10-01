@@ -17,5 +17,7 @@ void set_colors();
 void clearscreen();
 void drawroomnumbers(int y, int x);
 void drawstats();
+void zoom_spaceship();
+
 
 #endif

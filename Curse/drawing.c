@@ -10,26 +10,28 @@
 #include <ncurses.h>
 
 #include "playerdata.h"
+#include "utils.h"
+#include "wchar.h"
 
 // Putting this here because it has to go somewhere and it's pictures! Yeah.
 int spaceshipsizey = 13;
 int spaceshipsizex = 30;
 
-char spaceship_pic[13][30] =
+char  spaceship_pic[13][30] =
 {
-    "----------------\\            ",
-    " \\               \\           ",
-    "  \\               \\          ",
-    "   \\---------------\\------\\  ",
-    "   |                |   |  \\ ",
-    "   |                |   |   \\",
-    "    ----------------+---+---|",
-    "   |                |   |   /",
-    "   |                |   |  / ",
-    "   /---------------/------/  ",
-    "  /               /          ",
-    " /               /           ",
-    "----------------/            "
+    "--------------\\           ",
+    " \\            \\           ",
+    "  \\            \\          ",
+    "   \\------------\\------\\  ",
+    "   |      |      |   |  \\ ",
+    "   |      |      |   |   \\",
+    "    ------+------+---+---|",
+    "   |      |      |   |   /",
+    "   |      |      |   |  / ",
+    "   /------------/------/  ",
+    "  /            /          ",
+    " /            /           ",
+    "-------------/            "
 };
 
 void drawspaceship(int y, int x)
@@ -159,25 +161,25 @@ void drawstats()
     {
         move(i, left);
         attrset(COLOR_PAIR(characters[i].color));
-        addch('@');
+        addch(i + '1');
+        addstr(" @ ");
         attrset(COLOR_PAIR(7));
-        addch(' ');
         addstr(characters[i].name);
         sprintf(t, "%i", characters[i].health);
-        move(i, left + 14);
+        move(i, left + 16);
         addstr(t);
     }
-    sprintf(t, "Ship Hull:    %i", player_ship.health);
+    sprintf(t, "|Ship Hull:    %i", player_ship.health);
     move(0, left + 20);
     addstr(t);
-    sprintf(t, "Ship Shields: %i", player_ship.shield);
+    sprintf(t, "|Ship Shields: %i", player_ship.shield);
     move(1, left + 20);
     addstr(t);
-    sprintf(t, "Money:          %i", money);
-    move(0, left + 20);
+    sprintf(t, "|Money:          %i", money);
+    move(0, left + 38);
     addstr(t);
-    sprintf(t, "Current System: %i", player_ship.shield);
-    move(1, left + 20);
+    sprintf(t, "|Current System: %s", starname(current_system));
+    move(1, left + 38);
     addstr(t);
 }
 

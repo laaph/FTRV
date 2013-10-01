@@ -6,6 +6,8 @@
 //  Copyright (c) 2013 Laaph. All rights reserved.
 //
 
+#include <wchar.h>
+
 #ifndef Curse_playerdata_h
 #define Curse_playerdata_h
 
@@ -43,22 +45,6 @@ struct ship_info      player_ship;
 extern int spaceshipsizey;
 extern int spaceshipsizex;
 
-extern char spaceship_pic[13][30]; /* =
-{
-    "----------------\\            ",
-    " \\               \\           ",
-    "  \\               \\          ",
-    "   \\---------------\\------\\  ",
-    "   |                |   |  \\ ",
-    "   |                |   |   \\",
-    "    ----------------+---+---|",
-    "   |                |   |   /",
-    "   |                |   |  / ",
-    "   /---------------/------/  ",
-    "  /               /          ",
-    " /               /           ",
-    "----------------/            "
-}; */
-
+extern char spaceship_pic[13][30]; 
 
 #endif

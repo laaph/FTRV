@@ -94,10 +94,11 @@ void new_game()
     num_chars = 2;
     money = 1000;
     player_ship = setup_ship();
+    current_system = 0;
     
     characters[0] = random_character();
     characters[1] = random_character();
-    characters[1].locationY = 7;
+    characters[1].locationY = 8;
 
     clearscreen();
     drawspaceship (4, 2);
@@ -117,21 +118,21 @@ struct ship_info setup_ship()
     s.shield = 100;
     strcpy(s.name, "One Bad Rat");
     // Why do I hard code it all out like this?
-    s.roomLocationX[0] = 25;
+    s.roomLocationX[0] = 22;
     s.roomLocationY[0] = 4;
-    s.roomLocationX[1] = 25;
+    s.roomLocationX[1] = 22;
     s.roomLocationY[1] = 7;
-    s.roomLocationX[2] = 21;
+    s.roomLocationX[2] = 18;
     s.roomLocationY[2] = 4;
-    s.roomLocationX[3] = 21;
+    s.roomLocationX[3] = 18;
     s.roomLocationY[3] = 7;
-    s.roomLocationX[4] = 17;
+    s.roomLocationX[4] = 11;
     s.roomLocationY[4] = 4;
-    s.roomLocationX[5] = 17;
+    s.roomLocationX[5] = 11;
     s.roomLocationY[5] = 7;
-    s.roomLocationX[6] = 11;
+    s.roomLocationX[6] = 4;
     s.roomLocationY[6] = 4;
-    s.roomLocationX[7] = 11;
+    s.roomLocationX[7] = 4;
     s.roomLocationY[7] = 7;
     s.rooms[0] = PILOT;
     s.rooms[1] = SENSORS;
@@ -149,7 +150,7 @@ struct character_info random_character()
     struct character_info number_one;
     number_one.health    = 100;
     number_one.color     = arc4random_uniform(8);
-    number_one.locationX = 25;
+    number_one.locationX = 22;
     number_one.locationY = 5;
     strcpy(number_one.name, randomname());
     

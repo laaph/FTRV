@@ -104,6 +104,7 @@ void new_game()
     drawspaceship (4, 2);
     drawcharacters(4, 2);
     drawroomnumbers(4, 2);
+    draw_main_menu(30, 2);
     drawstats();
     refresh();
     

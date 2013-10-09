@@ -186,14 +186,17 @@ void drawstats()
 void draw_main_menu(int x, int y)
 {
     move(y + 0, x);
-    addstr("1 Launch to other system");
+    addstr(" ---------------------------------- ");
     move(y + 1, x);
-    addstr("2 Dock with planet");
+    addstr("| 1 Launch to other system         |");
     move(y + 2, x);
-    addstr("3 Look for trouble");
+    addstr("| 2 Dock with planet               |");
     move(y + 3, x);
-    addstr("4 See details of ship and crew");
-    
+    addstr("| 3 Look for trouble               |");
+    move(y + 4, x);
+    addstr("| 4 See details of ship and crew   |");
+    move(y + 5, x);
+    addstr(" ---------------------------------- ");
 }
 
 void zoom_spaceship()

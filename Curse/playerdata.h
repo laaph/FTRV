@@ -18,11 +18,11 @@ enum room_info
 
 struct character_info
 {
-    int health;
+    int  health;
     char name[14];
-    int color;
-    int locationX;
-    int locationY;
+    int  color;
+    int  locationX;
+    int  locationY;
 };
 
 struct ship_info

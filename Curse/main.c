@@ -42,12 +42,15 @@ int main(int argc, char * argv[])
         set_colors();
     }
     
-    while ((opt = getopt(argc, argv, "n")) != -1)
+    while ((opt = getopt(argc, argv, "nl")) != -1)
     {
         switch (opt)
         {
             case 'n':
                 skiptonew = 1;
+                break;
+            case 'l':
+                skiptonew = 0;
                 break;
             default: /* '?' */
                 fprintf(stderr, "Usage: %s [-n]\n",

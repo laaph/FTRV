@@ -16,13 +16,17 @@ enum planet_services
 
 struct planet_info
 {
-    int  ID;  // uppercase to not conflict with Obj-C's id
-    char name[28];
-    int  color;
-    int  locationX;
-    int  locationY;
-    planet_services services[10]; // Can't have them all?
+//  int    ID;  // uppercase to not conflict with Obj-C's id
+    // The index should work as an ID for now
+    char   name[28];
+    int    color;
+    int    locationX;
+    int    locationY;
+    enum   planet_services services[10]; // Can't have them all?
+    int    connections[10]; // Where can we go to?  Will this be
+                            // populated with IDs later?
 };
 
+struct planet_info planets[100];
 
 #endif

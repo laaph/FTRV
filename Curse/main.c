@@ -16,11 +16,13 @@
 #include "utils.h"
 #include "drawing.h"
 #include "playerdata.h"
+#include "galaxy_data.h"
 
 struct character_info random_character();
 static void finish(int a);
 void new_game();
 struct ship_info setup_ship();
+struct planet_info setup_earth();
 
 int main(int argc, char * argv[])
 {
@@ -103,6 +105,8 @@ void new_game()
     characters[1] = random_character();
     characters[1].locationY = 8;
 
+    planets[0] = setup_earth();
+    
     clearscreen();
     drawspaceship (4, 2);
     drawcharacters(4, 2);
@@ -149,6 +153,25 @@ struct ship_info setup_ship()
     
     return s;
 }
+
+struct planet_info setup_earth()
+{
+    struct planet_info p;
+    strcpy(p.name, "Sol System");
+    p.color = COLOR_GREEN;
+    p.locationX = 0;
+    p.locationY = 0;
+    // Services REALLY REALLY needs to turn in to a bit field.
+    p.services[0] = REPAIR;
+    p.services[1] = GOODS;
+    p.services[2] = FUEL;
+    p.services[3] = MISSIONS;
+    p.services[4] = HIREABLES;
+    p.connections[0] = 1;   // Not that planets 1 and 2 exist yet
+    p.connections[1] = 2;
+    return p;
+}
+
 struct character_info random_character()
 {
     struct character_info number_one;

@@ -23,6 +23,7 @@ static void finish(int a);
 void new_game();
 struct ship_info setup_ship();
 struct planet_info setup_earth();
+void main_loop();
 
 int main(int argc, char * argv[])
 {
@@ -61,6 +62,7 @@ int main(int argc, char * argv[])
         set_colors();
     }
 
+    noecho();
     
     if(skiptonew)
     {
@@ -108,18 +110,46 @@ void new_game()
 
     planets[0] = setup_earth();
     
-    clearscreen();
-    drawspaceship (4, 2);
-    drawcharacters(4, 2);
-    drawroomnumbers(4, 2);
-    draw_main_menu(30, 2);
-    drawstats();
-    refresh();
-    
-    getch();
+
     endwin();
     exit(0);
 }
+
+void main_loop()
+{
+    int input;
+    while(true)
+    {
+        clearscreen();
+        drawspaceship (4, 2);
+        drawcharacters(4, 2);
+        drawroomnumbers(4, 2);
+        draw_main_menu(30, 2);
+        drawstats();
+        refresh();
+        
+        input = getch();
+        switch(input)
+        {
+            case '1':
+                //Launch
+                break;
+            case '2':
+                // Dock
+                break;
+            case '3':
+                // Trouble
+                break;
+            case '4':
+                // Details
+                break;
+            case 27: // Escape character - what, no macro?
+                // Main menu and such
+                break;
+        }
+    }
+}
+
 struct ship_info setup_ship()
 {
     struct ship_info s;

@@ -135,7 +135,26 @@ void introscreen()
 
 void drawflame(int y, int x, int flamesize)
 {
-    // Warning!  This function will not check to verify you'll still be on the screen.  Be careful!
+    char * flames = "-----";
+    int min = 0;
+    int wid = flamesize;
+    attrset(COLOR_PAIR(3));
+    if(x < 2)
+    {
+        min = 5 - x;
+        x = 2;
+    }
+    if((77 - x) < flamesize)
+    {
+        wid = 77 - x;
+    }
+        
+    for(int i = 0; i < 5; i++)
+    {
+        move(i + y + 4, x - 2);
+        addnstr(&flames[min], wid);
+    }
+    attrset(COLOR_PAIR(7));
 }
 
 void set_colors()
@@ -205,12 +224,15 @@ void draw_main_menu(int x, int y)
 
 void zoom_spaceship()
 {
+    int flamesize;
     clearscreen();
     for(int i = 1; i < 80; i++)
     {
         delay_output(20);
         clearscreen();
         drawspaceship(4, i);
+        flamesize = 5; if (i < flamesize) { flamesize = i; }
+        drawflame(4, i - 1, flamesize);
         move(24,78);
         addch(' ');
         refresh();

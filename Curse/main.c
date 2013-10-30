@@ -29,21 +29,6 @@ int main(int argc, char * argv[])
 
     int opt; int skiptonew;
     
-    signal(SIGINT, finish);
-    WINDOW * w = initscr();
-    if(getmaxx(w) < 80 || getmaxy(w) < 24)
-    {
-        endwin();
-        printf("This game requires a terminal of at least 24x80 to run.\n");
-        exit(0);
-    }
-
-    if(has_colors())
-    {
-        start_color();
-        set_colors();
-    }
-    
     while ((opt = getopt(argc, argv, "nl")) != -1)
     {
         switch (opt)
@@ -60,6 +45,22 @@ int main(int argc, char * argv[])
                 exit(EXIT_FAILURE);
         }
     }
+    
+    signal(SIGINT, finish);
+    WINDOW * w = initscr();
+    if(getmaxx(w) < 80 || getmaxy(w) < 24)
+    {
+        endwin();
+        printf("This game requires a terminal of at least 24x80 to run.\n");
+        exit(0);
+    }
+
+    if(has_colors())
+    {
+        start_color();
+        set_colors();
+    }
+
     
     if(skiptonew)
     {

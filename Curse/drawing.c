@@ -102,8 +102,10 @@ void introscreen()
     {
         move(2, 0);
         addstr("                                                              ");
-        move(3, 0);
+        move(1, 0);
         addstr("Laaph Productions and Rogue Nation Rogue-like Players Present...");
+        move(3, 0);
+        addstr("                  ESCAPE FROM ROGUELIKE VELOCITY                ");
         drawspaceship(4, 1);
         move(2, i);
         addch('@');
@@ -114,8 +116,10 @@ void introscreen()
     {
         move(2, 0);
         addstr("                                                              ");
-        move(3, 0);
+        move(1, 0);
         addstr("Laaph Productions and Rogue Nation Rogue-like Players Present...");
+        move(3, 0);
+        addstr("                  ESCAPE FROM ROGUELIKE VELOCITY                ");
         drawspaceship(4, 1);
         move(j, endX);
         addch('@');
@@ -123,7 +127,7 @@ void introscreen()
         delay_output(100);
     }
     move(22, 0);
-    addstr("The flight of one bad mouse");
+    addstr("An adventure to discover that ncurses does not support UTF8");
     move(23, 0);
     addstr("Press [N] for a new game, or [C] to continue a game.");
 

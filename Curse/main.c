@@ -24,6 +24,7 @@ void new_game();
 struct ship_info setup_ship();
 struct planet_info setup_earth();
 void main_loop();
+void pause_menu();
 
 int main(int argc, char * argv[])
 {
@@ -110,7 +111,8 @@ void new_game()
 
     planets[0] = setup_earth();
     
-
+    main_loop();
+    
     endwin();
     exit(0);
 }
@@ -144,11 +146,47 @@ void main_loop()
                 // Details
                 break;
             case 27: // Escape character - what, no macro?
-                // Main menu and such
+                pause_menu();
                 break;
         }
     }
 }
+
+void pause_menu() // I'll rename this later, I'm sure
+{
+    draw_pause_menu(32, 4);
+    refresh();
+
+    int input; // c89 purists fuck you
+    input = getch();
+    switch(input)
+    {
+        case 'r':
+        case 'R':
+        case 27:  // Escape, go back to game
+            return;
+            break;
+        case 'Q':
+        case 'q':
+            endwin();
+            exit(0);
+            exit(0);
+            break;
+        case 's':
+        case 'S':
+            // Save
+            break;
+        case 'n':
+        case 'N':
+            // New game
+            break;
+        case 'l':
+        case 'L': // Load game
+            break;
+    }
+
+}
+
 
 struct ship_info setup_ship()
 {

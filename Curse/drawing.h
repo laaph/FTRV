@@ -19,5 +19,6 @@ void drawroomnumbers(int y, int x);
 void drawstats();
 void zoom_spaceship();
 void draw_main_menu(int x, int y);
+void draw_pause_menu(int x, int y);
 
 #endif

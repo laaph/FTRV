@@ -221,7 +221,23 @@ void draw_main_menu(int x, int y)
     move(y + 5, x);
     addstr(" ---------------------------------- ");
 }
-
+void draw_pause_menu(int x, int y)
+{
+    move(y + 0, x);
+    addstr(" ---------------------------------- ");
+    move(y + 1, x);
+    addstr("| Q Quit                           |");
+    move(y + 2, x);
+    addstr("| N New game                       |");
+    move(y + 3, x);
+    addstr("| S Save game                      |");
+    move(y + 4, x);
+    addstr("| L Load game                      |");
+    move(y + 5, x);
+    addstr("| R Return to game                 |");
+    move(y + 6, x);
+    addstr(" ---------------------------------- ");
+}
 void zoom_spaceship()
 {
     int flamesize;

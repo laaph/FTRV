@@ -18,6 +18,7 @@
 #include "playerdata.h"
 #include "galaxy_data.h"
 
+// We should probably move all non-main stuff out of this file.
 struct character_info random_character();
 static void finish(int a);
 void new_game();
@@ -25,6 +26,9 @@ struct ship_info setup_ship();
 struct planet_info setup_earth();
 void main_loop();
 void pause_menu();
+void launch();
+void unimplemented();
+
 
 int main(int argc, char * argv[])
 {
@@ -104,6 +108,7 @@ void new_game()
     money = 1000;
     player_ship = setup_ship();
     current_system = 0;
+    galaxy_setup();
     
     characters[0] = random_character();
     characters[1] = random_character();
@@ -135,21 +140,60 @@ void main_loop()
         {
             case '1':
                 //Launch
+                launch();
                 break;
             case '2':
                 // Dock
+                unimplemented();
                 break;
             case '3':
                 // Trouble
+                unimplemented();
                 break;
             case '4':
                 // Details
+                unimplemented();
                 break;
+            case 'x':
+            case 'X':
             case 27: // Escape character - what, no macro?
                 pause_menu();
                 break;
         }
     }
+}
+
+void unimplemented()
+{
+    draw_unimplemented(34, 4);
+    refresh();
+    getch();
+    return;
+}
+
+void launch()
+{
+    // This will be hard eventually, as we have to make a map that I haven't done
+    // yet, and figure out how to encode the information.  However, for now, I'll
+    // just list ALL the planets, and you can decide which one to jump to.
+    
+    draw_launch_menu(32, 4);
+    refresh();
+ 
+    while(true)
+    {
+        int input = getch();
+        if(input == 27)
+        {
+            return;
+        }
+        if(input > '0' || input < '2')
+        {
+            current_system = input - '0';
+            return;
+        }
+    }
+
 }
 
 void pause_menu() // I'll rename this later, I'm sure
@@ -161,8 +205,8 @@ void pause_menu() // I'll rename this later, I'm sure
     input = getch();
     switch(input)
     {
-        case 'r':
-        case 'R':
+        case 'x':
+        case 'X':
         case 27:  // Escape, go back to game
             return;
             break;

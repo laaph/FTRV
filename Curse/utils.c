@@ -25,9 +25,11 @@ char * randomname()
 }
 char * starname(int system_number)
 {
-    char *names[1] =
+    char *names[3] =
     {
-        "Riga"
+        "Riga",
+        "Aldebaran",
+        "Arcturus"
     };
     return names[system_number];
 }

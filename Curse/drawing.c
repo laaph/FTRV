@@ -12,6 +12,7 @@
 #include "playerdata.h"
 #include "utils.h"
 #include "wchar.h"
+#include "galaxy_data.h"
 
 // Putting this here because it has to go somewhere and it's pictures! Yeah.
 int spaceshipsizey = 13;
@@ -234,8 +235,47 @@ void draw_pause_menu(int x, int y)
     move(y + 4, x);
     addstr("| L Load game                      |");
     move(y + 5, x);
-    addstr("| R Return to game                 |");
+    addstr("| X Return to game                 |");
     move(y + 6, x);
+    addstr(" ---------------------------------- ");
+}
+
+void draw_unimplemented(int x, int y)
+{
+    move(y + 0, x);
+    addstr(" ---------------------------------- ");
+    move(y + 1, x);
+    addstr("| This has not yet been            |");
+    move(y + 2, x);
+    addstr("| implemented.                     |");
+    move(y + 3, x);
+    addstr("|                                  |");
+    move(y + 4, x);
+    addstr("| Terribly sorry.   :(             |");
+    move(y + 5, x);
+    addstr(" ---------------------------------- ");
+    
+}
+void draw_launch_menu(int x, int y)
+{
+    int a = 1;
+    int b;
+    char line[35];
+    move(y + 0, x);
+    addstr(" ---------------------------------- ");
+    for(b = 0; b < num_of_stars; b++)
+    {
+        if(b != current_system)
+        {
+            move(y + a, x);
+            addstr("|                                  |");
+            move(y + a, x);
+            snprintf(line, 35, "| %i %s", b, starname(b));
+            addstr(line);
+            a++;
+        }
+    }
+    move(y + a, x);
     addstr(" ---------------------------------- ");
 }
 void zoom_spaceship()

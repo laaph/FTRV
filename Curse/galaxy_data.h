@@ -9,6 +9,8 @@
 #ifndef Curse_galaxy_data_h
 #define Curse_galaxy_data_h
 
+void galaxy_setup();
+
 enum planet_services
 {
     REPAIR, GOODS, FUEL, MISSIONS, HIREABLES
@@ -28,5 +30,7 @@ struct planet_info
 };
 
 struct planet_info planets[100];
+int num_of_stars;
+
 
 #endif

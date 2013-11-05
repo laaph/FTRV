@@ -8,6 +8,7 @@
 //
 
 #include <ncurses.h>
+#include <string.h>
 
 #include "playerdata.h"
 #include "utils.h"
@@ -207,9 +208,40 @@ void drawstats()
     addstr(t);
 }
 
+void draw_generic(int x, int y, int width, int argc, char * argv[])
+{
+    int i; // For the purpose of having an index when we are done in the loop
+    char topbottom[width];
+    char line[width];
+    for(i = 1; i < width - 2; i++)
+    {
+        topbottom[i] = '-';
+    }
+    topbottom[0] = ' '; topbottom[i] = ' '; topbottom[i+1] = ' ';
+    move(y, x);
+    addnstr(topbottom, width);
+    for(i = 0; i < argc; i++)
+    {
+        int length = width - 4 - (int)strlen(argv[i]);
+        snprintf(line, width, "| %s %*s", argv[i], length, "|");
+        move(y + 1 + i, x);
+        addnstr(line, width);
+    }
+    move(y + 1 + i, x);
+    addnstr(topbottom, width);
+}
+
 void draw_main_menu(int x, int y)
 {
-    move(y + 0, x);
+    char *s[] = {
+        "1 Launch to other system",
+        "2 Dock with planet",
+        "3 Look for trouble",
+        "4 See details of ship and crew",
+        "X System Menu"
+    };
+    draw_generic(x, y, 38, 5, s);
+    /*    move(y + 0, x);
     addstr(" ---------------------------------- ");
     move(y + 1, x);
     addstr("| 1 Launch to other system         |");
@@ -220,7 +252,7 @@ void draw_main_menu(int x, int y)
     move(y + 4, x);
     addstr("| 4 See details of ship and crew   |");
     move(y + 5, x);
-    addstr(" ---------------------------------- ");
+    addstr(" ---------------------------------- ");*/
 }
 void draw_pause_menu(int x, int y)
 {

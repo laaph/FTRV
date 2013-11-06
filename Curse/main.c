@@ -212,19 +212,28 @@ void launch()
     // yet, and figure out how to encode the information.  However, for now, I'll
     // just list ALL the planets, and you can decide which one to jump to.
     
+    if(player_ship.fuel == 0)
+    {
+        draw_no_fuel(32, 4);
+        return;
+    }
+    
     draw_launch_menu(32, 4);
     refresh();
  
     while(true)
     {
         int input = getch();
-        if(input == 27)
+        if(input == 27 || input == 'X' || input == 'x')
         {
             return;
         }
         if(input > '0' || input < '2')
         {
-            current_system = input - '0';
+            int new_system =input - '0';
+            if(new_system != current_system)
+                player_ship.fuel--;
+            current_system = new_system;
             return;
         }
     }
@@ -301,6 +310,7 @@ struct ship_info setup_ship()
     s.rooms[5] = EMPTY;
     s.rooms[6] = EMPTY;
     s.rooms[7] = EMPTY;
+    s.fuel = 20;
     
     return s;
 }

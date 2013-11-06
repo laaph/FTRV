@@ -182,7 +182,7 @@ void drawstats()
     char t[80];
 
     int left = 0;
-    for(int i = 0; i < num_chars; i++)
+ /*   for(int i = 0; i < num_chars; i++)
     {
         move(i, left);
         attrset(COLOR_PAIR(characters[i].color));
@@ -193,7 +193,10 @@ void drawstats()
         sprintf(t, "%i", characters[i].health);
         move(i, left + 16);
         addstr(t);
-    }
+    }*/
+    sprintf(t, "Ship Fuel:       %2i", player_ship.fuel);
+    move(0, left);
+    addstr(t);
     sprintf(t, "|Ship Hull:    %i", player_ship.health);
     move(0, left + 20);
     addstr(t);
@@ -303,6 +306,8 @@ void draw_launch_menu(int x, int y)
         }
     }
     move(y + a, x);
+    addstr("| X Cancel                          ");
+    move(y + a + 1, x);
     addstr(" ---------------------------------- ");
 }
 void zoom_spaceship()

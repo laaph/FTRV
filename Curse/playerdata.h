@@ -32,6 +32,7 @@ struct ship_info
     int roomLocationY[8];
     int health;
     int shield;
+    int fuel;
     char name[52];
 };
 

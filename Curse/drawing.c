@@ -230,7 +230,26 @@ void draw_generic(int x, int y, int width, int argc, char * argv[])
     move(y + 1 + i, x);
     addnstr(topbottom, width);
 }
-
+void draw_dock_menu(int x, int y)
+{
+    char *s[] = {
+        "1 Refuel",
+        "2 Buy/Sell Ship Upgrades",
+        "3 Buy/Sell Goods",
+        "4 Hire/Dismiss Crew",
+        "5 Browse Mission Computer",
+        "X Return To Orbit"
+    };
+    draw_generic(x, y, 38, 6, s);
+}
+void draw_no_fuel(int x, int y)
+{
+    char *s[] = {
+        "You are unable to go ot another system",
+        "due to no fuel.  Refuel and try again."
+    };
+    draw_generic(x, y, 38, 2, s);
+}
 void draw_main_menu(int x, int y)
 {
     char *s[] = {

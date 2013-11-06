@@ -28,6 +28,7 @@ void main_loop();
 void pause_menu();
 void launch();
 void unimplemented();
+void dock();
 
 
 int main(int argc, char * argv[])
@@ -144,15 +145,15 @@ void main_loop()
                 break;
             case '2':
                 // Dock
-                unimplemented();
+                dock();
                 break;
             case '3':
                 // Trouble
-                unimplemented();
+                unimplemented(34, 4);
                 break;
             case '4':
                 // Details
-                unimplemented();
+                unimplemented(34, 4);
                 break;
             case 'x':
             case 'X':
@@ -162,10 +163,44 @@ void main_loop()
         }
     }
 }
-
-void unimplemented()
+void dock()
 {
-    draw_unimplemented(34, 4);
+    while(true)
+    {
+        draw_dock_menu(34, 4);
+        refresh();
+
+        int input = getch();
+        switch(input)
+        {
+            case 'x':
+            case 'X':
+            case 27:  // Escape, go back to game
+                return;
+                break;
+            case '1':
+                unimplemented(36, 6);
+                break;
+            case '2':
+                unimplemented(36, 6);
+                break;
+            case '3':
+                unimplemented(36, 6);
+                break;
+            case '4':
+                unimplemented(36, 6);
+                break;
+            case '5':
+                unimplemented(36, 6);
+                break;
+        }
+    }
+    
+}
+
+void unimplemented(int x, int y)
+{
+    draw_unimplemented(x, y);
     refresh();
     getch();
     return;
@@ -198,37 +233,40 @@ void launch()
 
 void pause_menu() // I'll rename this later, I'm sure
 {
-    draw_pause_menu(32, 4);
+    draw_pause_menu(34, 4);
     refresh();
 
-    int input; // c89 purists fuck you
-    input = getch();
-    switch(input)
+    while(true)
     {
-        case 'x':
-        case 'X':
-        case 27:  // Escape, go back to game
-            return;
-            break;
-        case 'Q':
-        case 'q':
-            endwin();
-            exit(0);
-            exit(0);
-            break;
-        case 's':
-        case 'S':
-            // Save
-            break;
-        case 'n':
-        case 'N':
-            // New game
-            break;
-        case 'l':
-        case 'L': // Load game
-            break;
+        int input; // c89 purists fuck you
+        input = getch();
+        switch(input)
+        {
+            case 'x':
+            case 'X':
+            case 27:  // Escape, go back to game
+                return;
+                break;
+            case 'Q':
+            case 'q':
+                endwin();
+                exit(0);
+                exit(0);
+                break;
+            case 's':
+            case 'S':
+                unimplemented(36, 6);
+                break;
+            case 'n':
+            case 'N':
+                unimplemented(36, 6);
+                break;
+            case 'l':
+            case 'L': // Load game
+                unimplemented(36, 6);
+                break;
+        }
     }
-
 }
 
 

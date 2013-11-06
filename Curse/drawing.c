@@ -241,52 +241,28 @@ void draw_main_menu(int x, int y)
         "X System Menu"
     };
     draw_generic(x, y, 38, 5, s);
-    /*    move(y + 0, x);
-    addstr(" ---------------------------------- ");
-    move(y + 1, x);
-    addstr("| 1 Launch to other system         |");
-    move(y + 2, x);
-    addstr("| 2 Dock with planet               |");
-    move(y + 3, x);
-    addstr("| 3 Look for trouble               |");
-    move(y + 4, x);
-    addstr("| 4 See details of ship and crew   |");
-    move(y + 5, x);
-    addstr(" ---------------------------------- ");*/
 }
 void draw_pause_menu(int x, int y)
 {
-    move(y + 0, x);
-    addstr(" ---------------------------------- ");
-    move(y + 1, x);
-    addstr("| Q Quit                           |");
-    move(y + 2, x);
-    addstr("| N New game                       |");
-    move(y + 3, x);
-    addstr("| S Save game                      |");
-    move(y + 4, x);
-    addstr("| L Load game                      |");
-    move(y + 5, x);
-    addstr("| X Return to game                 |");
-    move(y + 6, x);
-    addstr(" ---------------------------------- ");
+    char *s[] = {
+        "Q Quit",
+        "N New game",
+        "S Save game",
+        "L Load game",
+        "X Return to game"
+    };
+    draw_generic(x, y, 38, 5, s);
 }
 
 void draw_unimplemented(int x, int y)
 {
-    move(y + 0, x);
-    addstr(" ---------------------------------- ");
-    move(y + 1, x);
-    addstr("| This has not yet been            |");
-    move(y + 2, x);
-    addstr("| implemented.                     |");
-    move(y + 3, x);
-    addstr("|                                  |");
-    move(y + 4, x);
-    addstr("| Terribly sorry.   :(             |");
-    move(y + 5, x);
-    addstr(" ---------------------------------- ");
-    
+    char *s[] = {
+        "This has not yet been",
+        "implemented.",
+        "",
+        "Terribly sorry.    :( ",
+    };
+    draw_generic(x, y, 38, 4, s);
 }
 void draw_launch_menu(int x, int y)
 {

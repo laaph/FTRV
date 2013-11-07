@@ -10,5 +10,5 @@
 
 void galaxy_setup()
 {
-    num_of_stars = 3;
+    num_of_stars = NUM_OF_STARS;
 }

@@ -10,6 +10,7 @@
 #define Curse_galaxy_data_h
 
 void galaxy_setup();
+struct planet_info setup_planet();
 
 enum planet_services
 {
@@ -29,7 +30,7 @@ struct planet_info
                             // populated with IDs later?
 };
 
-#define NUM_OF_STARS 3
+#define NUM_OF_STARS 5
 
 struct planet_info planets[NUM_OF_STARS];
 int num_of_stars;

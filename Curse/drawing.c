@@ -9,6 +9,8 @@
 
 #include <ncurses.h>
 #include <string.h>
+#include <math.h>
+#include <stdlib.h>
 
 #include "playerdata.h"
 #include "utils.h"
@@ -275,7 +277,46 @@ void draw_pause_menu(int x, int y)
     };
     draw_generic(x, y, 38, 5, s);
 }
+void draw_gas_station_all_full(int x, int y)
+{
+    char *s[] = {
+        "Your ship has a full tank of fuel."
+    };
+    draw_generic(x, y, 38, 1, s);
+}
+void draw_map(int select) // Could add x, y but I suspect it will be hardcoded in any case
+{
+    char *s[] = {
+        "", "", "", "", "",
+        "", "", "", "", "",
+        "", "", "", "", "",
+        "", "", "", "", ""
+    };
+    draw_generic(2, 2, 76, 16, s);
+    for(int i = 0; i < NUM_OF_STARS; i++)
+    {
+        move(planets[i].locationY + 3, planets[i].locationX + 3);
 
+        attrset(COLOR_PAIR(planets[i].color));
+        if(i == select)
+        {
+            // set inverse
+            attrset(A_REVERSE);
+            
+        }
+        addch('A' + i); // Good for 26 planets
+        // Er except X implies escape, so um...
+        // We could do many other things too...
+        // Ideally we'd do 1, 2, ... for planets we
+        // can jump to and * for others
+        // otherwise fuel and time go up with distance
+
+        attrset(COLOR_PAIR(7));
+        attrset(A_NORMAL);
+        refresh();
+    }
+    refresh();
+}
 void draw_unimplemented(int x, int y)
 {
     char *s[] = {
@@ -286,11 +327,28 @@ void draw_unimplemented(int x, int y)
     };
     draw_generic(x, y, 38, 4, s);
 }
-void draw_launch_menu(int x, int y)
+int draw_launch_menu(int x, int y, int s)
 {
-    int a = 1;
-    int b;
-    char line[35];
+#define LL 76  // line_length  // Bad bad bad how can I fix this?
+    char line1[LL] = "TAB: choose planet  ENTER: jump, X: cancel";
+    char line2[LL] = "";
+    char line3[LL];
+    int xdelta = abs(planets[s].locationX - planets[current_system].locationX);
+    int ydelta = abs(planets[s].locationY - planets[current_system].locationY);
+    double distance = sqrt((xdelta*xdelta)+(ydelta*ydelta));
+    int fuel_use = (int)distance;
+
+    snprintf(line3, sizeof(line3), "Current target: %s (%i, %i), Distance:%i, Fuel cost:%i", starname(s),
+             planets[s].locationX, planets[s].locationY, (int)(distance * 314000) , fuel_use);
+    
+    char *ss[3] =
+    {
+        line1, line2, line3
+    };
+    
+    draw_generic(x, y, LL, 3, ss);
+    return fuel_use;
+    /*
     move(y + 0, x);
     addstr(" ---------------------------------- ");
     for(b = 0; b < num_of_stars; b++)
@@ -300,15 +358,46 @@ void draw_launch_menu(int x, int y)
             move(y + a, x);
             addstr("|                                  |");
             move(y + a, x);
-            snprintf(line, 35, "| %i %s", b, starname(b));
+            snprintf(line, 35, "| %c %s (%i, %i)", b + 'A', starname(b), planets[b].locationX, planets[b].locationY);
             addstr(line);
             a++;
         }
     }
     move(y + a, x);
-    addstr("| X Cancel                          ");
+    addstr("| X Cancel                         |");
     move(y + a + 1, x);
     addstr(" ---------------------------------- ");
+     */
+}
+void draw_not_enough_fuel(int x, int y)
+{
+    char *s[] = {
+        "You don't have enough fuel to get there.",
+    };
+    draw_generic(x, y, 45, 1, s);
+}
+void draw_gas_station(int x, int y, int current_fuel, int max_fuel, int cost_per_fuel)
+{
+    char line1[53];
+    char line2[53];
+    char line3[53];
+    char line4[53];
+    char line5[53];
+    snprintf(line1, sizeof(line1), "You have %i fuel.  You most can carry is %i.", current_fuel, max_fuel);
+    snprintf(line2, sizeof(line2), "The fuel here costs $%i per unit.", cost_per_fuel);
+    if(max_fuel - current_fuel > 9)
+    {
+        snprintf(line3, sizeof(line3), "Press F to fill the tank, 0 to buy 10 units");
+    } else {
+        snprintf(line3, sizeof(line3), "Press F to fill the tank,");
+    }
+    snprintf(line4, sizeof(line4), "or 1-9 to buy 1 to 9 units of fuel");
+    snprintf(line5, sizeof(line5), "Press X to leave the fueling station");
+    char *ss[5] =
+    {
+        line1, line2, line3, line4, line5
+    };
+    draw_generic(x, y, 53, 5, ss);
 }
 void zoom_spaceship()
 {

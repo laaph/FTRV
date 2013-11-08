@@ -23,13 +23,12 @@ struct character_info random_character();
 static void finish(int a);
 void new_game();
 struct ship_info setup_ship();
-struct planet_info setup_earth();
 void main_loop();
 void pause_menu();
 void launch();
 void unimplemented();
 void dock();
-
+void refuel();
 
 int main(int argc, char * argv[])
 {
@@ -115,7 +114,10 @@ void new_game()
     characters[1] = random_character();
     characters[1].locationY = 8;
 
-    planets[0] = setup_earth();
+    for(int i = 0; i < NUM_OF_STARS; i++)
+    {
+        planets[i] = setup_planet(i);
+    }
     
     main_loop();
     
@@ -179,7 +181,7 @@ void dock()
                 return;
                 break;
             case '1':
-                unimplemented(36, 6);
+                refuel();
                 break;
             case '2':
                 unimplemented(36, 6);
@@ -193,6 +195,52 @@ void dock()
             case '5':
                 unimplemented(36, 6);
                 break;
+        }
+    }
+    
+}
+void refuel()
+{
+    int input;
+    int cost_of_fuel = 2;
+    int max_fuel = 20;
+    
+    while(true)
+    {
+        clearscreen();
+        drawspaceship (4, 2);
+        drawcharacters(4, 2);
+        drawroomnumbers(4, 2);
+        drawstats();
+
+        if(player_ship.fuel >= max_fuel)
+        {
+            draw_gas_station_all_full(10,10);
+            refresh();
+            getch();
+            return;
+        }
+        draw_gas_station(10, 10, player_ship.fuel, max_fuel, cost_of_fuel);
+        refresh();
+        
+        input = getch();
+        if(input == 27 || input == 'x' || input == 'X')
+        {
+            return;
+        }
+        if(input == '0' && (max_fuel - player_ship.fuel > 10) && (money > 10 * cost_of_fuel))
+        {
+            money = money - (10 * cost_of_fuel);
+            player_ship.fuel = player_ship.fuel + 10;
+        }
+        if(input >= '1' && input <= '9')
+        {
+            // We can do this later
+        }
+        if((input == 'F' || input == 'f') && ( money >= 10 * cost_of_fuel * (max_fuel - player_ship.fuel)))
+        {
+            money = money - cost_of_fuel * (max_fuel - player_ship.fuel);
+            player_ship.fuel = 20;
         }
     }
     
@@ -214,27 +262,54 @@ void launch()
     
     if(player_ship.fuel == 0)
     {
-        draw_no_fuel(32, 4);
+        draw_map(current_system);
+        draw_no_fuel(10, 10);
+        getch();
         return;
     }
     
-    draw_launch_menu(32, 4);
-    refresh();
- 
+    int fuel_usage;
+    int select = current_system;
+    int input;
     while(true)
     {
-        int input = getch();
+        draw_map(select);
+        fuel_usage = draw_launch_menu(2, 19, select);
+        refresh();
+
+        input = getch();
+        
         if(input == 27 || input == 'X' || input == 'x')
         {
             return;
         }
-        if(input > '0' || input < '2')
+        if(input >= 'A' && input < 'A' + NUM_OF_STARS)
         {
-            int new_system =input - '0';
-            if(new_system != current_system)
-                player_ship.fuel--;
-            current_system = new_system;
-            return;
+            select = input - 'A';
+        }
+        if(input >= 'a' && input < 'a' + NUM_OF_STARS)
+        {
+            select = input - 'a';
+        }
+        if(input == '\t')
+        {
+            select++;
+            if(select == NUM_OF_STARS)
+                select = 0;
+        }
+        if(input == '\n' || input == KEY_ENTER || input == '\r')// '\n works on my machine but the others are
+                                                                // here in case it works on others
+        {
+            if(player_ship.fuel >= fuel_usage)
+            {
+                player_ship.fuel = player_ship.fuel - fuel_usage;
+                current_system = select;
+                return;
+            } else {
+                draw_not_enough_fuel(15, 10);
+                getch();
+            }
+            
         }
     }
 
@@ -315,29 +390,11 @@ struct ship_info setup_ship()
     return s;
 }
 
-struct planet_info setup_earth()
-{
-    struct planet_info p;
-    strcpy(p.name, "Sol System");
-    p.color = COLOR_GREEN;
-    p.locationX = 0;
-    p.locationY = 0;
-    // Services REALLY REALLY needs to turn in to a bit field.
-    p.services[0] = REPAIR;
-    p.services[1] = GOODS;
-    p.services[2] = FUEL;
-    p.services[3] = MISSIONS;
-    p.services[4] = HIREABLES;
-    p.connections[0] = 1;   // Not that planets 1 and 2 exist yet
-    p.connections[1] = 2;
-    return p;
-}
-
 struct character_info random_character()
 {
     struct character_info number_one;
     number_one.health    = 100;
-    number_one.color     = arc4random_uniform(8);
+    number_one.color     = 
     number_one.locationX = 22;
     number_one.locationY = 5;
     strcpy(number_one.name, randomname());

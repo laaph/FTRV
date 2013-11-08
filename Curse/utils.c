@@ -23,13 +23,3 @@ char * randomname()
     return names[arc4random_uniform(num_names)];
     
 }
-char * starname(int system_number)
-{
-    char *names[3] =
-    {
-        "Riga",
-        "Aldebaran",
-        "Arcturus"
-    };
-    return names[system_number];
-}

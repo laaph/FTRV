@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6700CECF1825C4E600856D0D /* galaxy_data.c in Sources */ = {isa = PBXBuildFile; fileRef = 6700CECE1825C4E600856D0D /* galaxy_data.c */; };
 		67352C8317F28BD900552CF8 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 67352C8217F28BD900552CF8 /* main.c */; };
 		67352C8517F28BD900552CF8 /* Curse.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 67352C8417F28BD900552CF8 /* Curse.1 */; };
 		67352C8C17F2904000552CF8 /* libncurses.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 67352C8B17F2904000552CF8 /* libncurses.dylib */; };
@@ -28,6 +29,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		6700CECE1825C4E600856D0D /* galaxy_data.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = galaxy_data.c; sourceTree = "<group>"; };
 		67352C7F17F28BD900552CF8 /* Curse */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Curse; sourceTree = BUILT_PRODUCTS_DIR; };
 		67352C8217F28BD900552CF8 /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
 		67352C8417F28BD900552CF8 /* Curse.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = Curse.1; sourceTree = "<group>"; };
@@ -37,6 +39,7 @@
 		67352C9017F2A78C00552CF8 /* utils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = utils.h; sourceTree = "<group>"; };
 		67352C9117F4AA5F00552CF8 /* drawing.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = drawing.c; sourceTree = "<group>"; };
 		67352C9317F4AA7000552CF8 /* drawing.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = drawing.h; sourceTree = "<group>"; };
+		6750884C1805039400F7F919 /* galaxy_data.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = galaxy_data.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +75,8 @@
 			isa = PBXGroup;
 			children = (
 				67352C8217F28BD900552CF8 /* main.c */,
+				6750884C1805039400F7F919 /* galaxy_data.h */,
+				6700CECE1825C4E600856D0D /* galaxy_data.c */,
 				67352C9117F4AA5F00552CF8 /* drawing.c */,
 				67352C9317F4AA7000552CF8 /* drawing.h */,
 				67352C8D17F2A63700552CF8 /* playerdata.h */,
@@ -134,6 +139,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				67352C8317F28BD900552CF8 /* main.c in Sources */,
+				6700CECF1825C4E600856D0D /* galaxy_data.c in Sources */,
 				67352C9217F4AA6000552CF8 /* drawing.c in Sources */,
 				67352C8F17F2A74100552CF8 /* utils.c in Sources */,
 			);
@@ -243,6 +249,7 @@
 				67352C8A17F28BD900552CF8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

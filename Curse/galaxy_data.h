@@ -30,10 +30,10 @@ struct planet_info
                             // populated with IDs later?
 };
 
-#define NUM_OF_STARS 5
+#define NUM_OF_STARS 6
 
 struct planet_info planets[NUM_OF_STARS];
-int num_of_stars;
+//int num_of_stars;
 
 
 #endif

@@ -28,5 +28,6 @@ void draw_not_enough_fuel(int x, int y);
 void draw_map(int select);
 void draw_gas_station(int x, int y, int current_fuel, int max_fuel, int cost_per_fuel);
 void draw_gas_station_all_full(int x, int y);
+void drawing_setup();
 
 #endif

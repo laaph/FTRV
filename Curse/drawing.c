@@ -12,6 +12,7 @@
 #include <math.h>
 #include <stdlib.h>
 
+#include "drawing.h"
 #include "playerdata.h"
 #include "utils.h"
 #include "wchar.h"
@@ -37,6 +38,32 @@ char  spaceship_pic[13][30] =
     " /            /           ",
     "-------------/            "
 };
+
+static void finish(int a)
+{
+    endwin();
+    exit(0);
+}
+
+void drawing_setup()
+{
+    signal(SIGINT, finish);
+    WINDOW * w = initscr();
+    if(getmaxx(w) < 80 || getmaxy(w) < 24)
+    {
+        endwin();
+        printf("This game requires a terminal of at least 24x80 to run.\n");
+        exit(0);
+    }
+    
+    if(has_colors())
+    {
+        start_color();
+        set_colors();
+    }
+    
+    noecho();
+}
 
 void drawspaceship(int y, int x)
 {

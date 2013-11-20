@@ -14,7 +14,7 @@
 
 void galaxy_setup()
 {
-    num_of_stars = NUM_OF_STARS;
+    //num_of_stars = NUM_OF_STARS;
 }
 
 char * starname(int system_number)
@@ -25,6 +25,7 @@ char * starname(int system_number)
         "Betelgeuse",
         "Cor Caroli",
         "Draconis",
+        "Eudamus",
         "Riga"
     };
     return names[system_number];

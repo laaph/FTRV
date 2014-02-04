@@ -85,7 +85,7 @@ void dock()
                 refuel();
                 break;
             case '2':
-                unimplemented(36, 6);
+                upgrade_ship();
                 break;
             case '3':
                 unimplemented(36, 6);
@@ -252,6 +252,15 @@ void pause_menu() // I'll rename this later, I'm sure
                 break;
         }
     }
+}
+
+void upgrade_ship()
+{
+    clearscreen();
+    draw_ship_info(2, 2);
+    draw_upgrade_menu(42, 2);
+    // Do upgrade switch
+    
 }
 
 struct ship_info setup_ship()

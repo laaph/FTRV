@@ -39,6 +39,11 @@ char  spaceship_pic[13][30] =
     "-------------/            "
 };
 
+char room_info_strings[10][12] =
+{
+    "EMPTY", "PILOT", "SENSORS", "BEAM", "LASER", "MISSILE", "TELEPORT", "MEDBAY", "FUELBAY",  "STORAGE"
+};
+
 static void finish(int a)
 {
     endwin();
@@ -136,7 +141,7 @@ void introscreen()
         move(1, 0);
         addstr("Laaph Productions and Rogue Nation Rogue-like Players Present...");
         move(3, 0);
-        addstr("                  ESCAPE FROM ROGUELIKE VELOCITY                ");
+        addstr("                  FASTER THAN ROGUELIKE VELOCITY                ");
         drawspaceship(4, 1);
         move(2, i);
         addch('@');
@@ -150,7 +155,7 @@ void introscreen()
         move(1, 0);
         addstr("Laaph Productions and Rogue Nation Rogue-like Players Present...");
         move(3, 0);
-        addstr("                  ESCAPE FROM ROGUELIKE VELOCITY                ");
+        addstr("                  FASTER THAN ROGUELIKE VELOCITY                ");
         drawspaceship(4, 1);
         move(j, endX);
         addch('@');
@@ -239,6 +244,37 @@ void drawstats()
     move(1, left + 38);
     addstr(t);
 }
+
+void draw_ship_info(int x, int y)
+{
+    // Not going to use draw_generic for this
+    // Oh yes we are go look at other examples
+    
+    int linelength = 9;
+    int linecount  = 12;
+    char lines[linecount][linelength];
+    char *  linesPtr = lines[0];
+
+    strcpy("", &lines[0][0]);
+    for(int i = 0; i < 8; i++)
+    {
+        snprintf(&lines[i+1][0], linelength, "%i %s", i + 1, room_info_strings[i]);
+    }
+    strcpy("", &lines[9][0]);
+
+    draw_generic(x, y, 15, linecount, &linesPtr);
+}
+void draw_upgrade_menu(int x, int y)
+{
+    char *s[] = {
+        "1 Buy new component",
+        "2 Sell component",
+        "3 Upgrade component",
+        "X Return To Orbit"
+    };
+    draw_generic(x, y, 28, 4, s);
+}
+
 
 void draw_generic(int x, int y, int width, int argc, char * argv[])
 {
@@ -375,26 +411,6 @@ int draw_launch_menu(int x, int y, int s)
     
     draw_generic(x, y, LL, 3, ss);
     return fuel_use;
-    /*
-    move(y + 0, x);
-    addstr(" ---------------------------------- ");
-    for(b = 0; b < num_of_stars; b++)
-    {
-        if(b != current_system)
-        {
-            move(y + a, x);
-            addstr("|                                  |");
-            move(y + a, x);
-            snprintf(line, 35, "| %c %s (%i, %i)", b + 'A', starname(b), planets[b].locationX, planets[b].locationY);
-            addstr(line);
-            a++;
-        }
-    }
-    move(y + a, x);
-    addstr("| X Cancel                         |");
-    move(y + a + 1, x);
-    addstr(" ---------------------------------- ");
-     */
 }
 void draw_not_enough_fuel(int x, int y)
 {

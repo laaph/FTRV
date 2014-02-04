@@ -17,5 +17,7 @@ void launch();
 void unimplemented();
 void dock();
 void refuel();
+void upgrade_ship();
+
 
 #endif

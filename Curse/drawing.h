@@ -29,5 +29,8 @@ void draw_map(int select);
 void draw_gas_station(int x, int y, int current_fuel, int max_fuel, int cost_per_fuel);
 void draw_gas_station_all_full(int x, int y);
 void drawing_setup();
+void draw_ship_info(int x, int y);
+void draw_generic(int x, int y, int width, int argc, char * argv[]);
+void draw_upgrade_menu(int x, int y);
 
 #endif

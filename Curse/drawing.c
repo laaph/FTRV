@@ -39,9 +39,9 @@ char  spaceship_pic[13][30] =
     "-------------/            "
 };
 
-char room_info_strings[10][12] =
+char room_info_strings[11][12] =
 {
-    "EMPTY", "PILOT", "SENSORS", "BEAM", "LASER", "MISSILE", "TELEPORT", "MEDBAY", "FUELBAY",  "STORAGE"
+    "EMPTY", "BRIDGE", "SENSORS", "BEAM", "LASER", "MISSILE", "TELEPORT", "MEDBAY", "FUELBAY",  "STORAGE", "BARRACKS"
 };
 
 static void finish(int a)

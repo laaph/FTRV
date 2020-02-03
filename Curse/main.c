@@ -23,7 +23,7 @@
 #include "galaxy_data.h"
 #include "loop.h"
 
-void new_game(); // Even this might need to go in to loop.c
+void new_game(void); // Even this might need to go in to loop.c
 
 static void finish(int a)
 {
@@ -77,7 +77,7 @@ int main(int argc, char * argv[])
         }
     }
     
-    finish(1);
+    //finish(1);
     return 0;
 }
 

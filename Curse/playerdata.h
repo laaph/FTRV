@@ -47,5 +47,5 @@ extern int spaceshipsizey;
 extern int spaceshipsizex;
 
 extern char spaceship_pic[13][30]; 
-extern char room_info_strings[10][12];  // May require more than 12 chars at some point
+extern char room_info_strings[11][12];  // May require more than 12 chars at some point
 #endif

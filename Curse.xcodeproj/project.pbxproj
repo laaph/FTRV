@@ -8,12 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		6700CECF1825C4E600856D0D /* galaxy_data.c in Sources */ = {isa = PBXBuildFile; fileRef = 6700CECE1825C4E600856D0D /* galaxy_data.c */; };
-		6707DC9F183C307F0034B337 /* loop.c in Sources */ = {isa = PBXBuildFile; fileRef = 6707DC9E183C307F0034B337 /* loop.c */; };
 		67352C8317F28BD900552CF8 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 67352C8217F28BD900552CF8 /* main.c */; };
 		67352C8517F28BD900552CF8 /* Curse.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 67352C8417F28BD900552CF8 /* Curse.1 */; };
 		67352C8C17F2904000552CF8 /* libncurses.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 67352C8B17F2904000552CF8 /* libncurses.dylib */; };
 		67352C8F17F2A74100552CF8 /* utils.c in Sources */ = {isa = PBXBuildFile; fileRef = 67352C8E17F2A74100552CF8 /* utils.c */; };
 		67352C9217F4AA6000552CF8 /* drawing.c in Sources */ = {isa = PBXBuildFile; fileRef = 67352C9117F4AA5F00552CF8 /* drawing.c */; };
+		6748A38B23E810D200F9C70C /* loop.c in Sources */ = {isa = PBXBuildFile; fileRef = 6748A38923E810D200F9C70C /* loop.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -31,8 +31,6 @@
 
 /* Begin PBXFileReference section */
 		6700CECE1825C4E600856D0D /* galaxy_data.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = galaxy_data.c; sourceTree = "<group>"; };
-		6707DC9E183C307F0034B337 /* loop.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = loop.c; path = ../loop.c; sourceTree = "<group>"; };
-		6707DCA0183C308E0034B337 /* loop.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = loop.h; path = ../loop.h; sourceTree = "<group>"; };
 		67352C7F17F28BD900552CF8 /* Curse */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Curse; sourceTree = BUILT_PRODUCTS_DIR; };
 		67352C8217F28BD900552CF8 /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
 		67352C8417F28BD900552CF8 /* Curse.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = Curse.1; sourceTree = "<group>"; };
@@ -42,6 +40,8 @@
 		67352C9017F2A78C00552CF8 /* utils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = utils.h; sourceTree = "<group>"; };
 		67352C9117F4AA5F00552CF8 /* drawing.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = drawing.c; sourceTree = "<group>"; };
 		67352C9317F4AA7000552CF8 /* drawing.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = drawing.h; sourceTree = "<group>"; };
+		6748A38923E810D200F9C70C /* loop.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = loop.c; sourceTree = "<group>"; };
+		6748A38A23E810D200F9C70C /* loop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = loop.h; sourceTree = "<group>"; };
 		6750884C1805039400F7F919 /* galaxy_data.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = galaxy_data.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -77,8 +77,6 @@
 		67352C8117F28BD900552CF8 /* Curse */ = {
 			isa = PBXGroup;
 			children = (
-				6707DC9E183C307F0034B337 /* loop.c */,
-				6707DCA0183C308E0034B337 /* loop.h */,
 				67352C8217F28BD900552CF8 /* main.c */,
 				6750884C1805039400F7F919 /* galaxy_data.h */,
 				6700CECE1825C4E600856D0D /* galaxy_data.c */,
@@ -87,6 +85,8 @@
 				67352C8D17F2A63700552CF8 /* playerdata.h */,
 				67352C8E17F2A74100552CF8 /* utils.c */,
 				67352C9017F2A78C00552CF8 /* utils.h */,
+				6748A38923E810D200F9C70C /* loop.c */,
+				6748A38A23E810D200F9C70C /* loop.h */,
 				67352C8417F28BD900552CF8 /* Curse.1 */,
 			);
 			path = Curse;
@@ -118,15 +118,16 @@
 		67352C7717F28BD900552CF8 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0500;
+				LastUpgradeCheck = 1020;
 				ORGANIZATIONNAME = Laaph;
 			};
 			buildConfigurationList = 67352C7A17F28BD900552CF8 /* Build configuration list for PBXProject "Curse" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = 67352C7617F28BD900552CF8;
 			productRefGroup = 67352C8017F28BD900552CF8 /* Products */;
@@ -143,7 +144,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6707DC9F183C307F0034B337 /* loop.c in Sources */,
+				6748A38B23E810D200F9C70C /* loop.c in Sources */,
 				67352C8317F28BD900552CF8 /* main.c in Sources */,
 				6700CECF1825C4E600856D0D /* galaxy_data.c in Sources */,
 				67352C9217F4AA6000552CF8 /* drawing.c in Sources */,
@@ -158,21 +159,36 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -195,22 +211,36 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;

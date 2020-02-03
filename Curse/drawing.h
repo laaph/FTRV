@@ -32,5 +32,10 @@ void drawing_setup(void);
 void draw_ship_info(int x, int y);
 void draw_generic(int x, int y, int width, int argc, char * argv[]);
 void draw_upgrade_menu(int x, int y);
+int get_single_char_input(void);
+void refresh_screen(void);
+void tear_down(void);
+
+extern int FTRV_ENTER;
 
 #endif

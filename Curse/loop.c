@@ -13,7 +13,6 @@
 
 
 #include <stdlib.h>
-#include <ncurses.h>
 #include <signal.h>
 #include <string.h>
 #include <stdio.h>
@@ -36,9 +35,9 @@ void main_loop()
         drawroomnumbers(4, 2);
         draw_main_menu(30, 2);
         drawstats();
-        refresh();
+        refresh_screen();
         
-        input = getch();
+        input = get_single_char_input();
         switch(input)
         {
             case '1':
@@ -68,12 +67,12 @@ void main_loop()
 
 void dock()
 {
-    while(true)
+    while(1)
     {
         draw_dock_menu(34, 4);
-        refresh();
+        refresh_screen();
         
-        int input = getch();
+        int input = get_single_char_input();
         switch(input)
         {
             case 'x':
@@ -107,7 +106,7 @@ void refuel()
     int cost_of_fuel = 2;
     int max_fuel = 20;
     
-    while(true)
+    while(1)
     {
         clearscreen();
         drawspaceship (4, 2);
@@ -118,14 +117,14 @@ void refuel()
         if(player_ship.fuel >= max_fuel)
         {
             draw_gas_station_all_full(10,10);
-            refresh();
-            getch();
+            refresh_screen();
+            get_single_char_input();
             return;
         }
         draw_gas_station(10, 10, player_ship.fuel, max_fuel, cost_of_fuel);
-        refresh();
+        refresh_screen();
         
-        input = getch();
+        input = get_single_char_input();
         if(input == 27 || input == 'x' || input == 'X')
         {
             return;
@@ -151,8 +150,8 @@ void refuel()
 void unimplemented(int x, int y)
 {
     draw_unimplemented(x, y);
-    refresh();
-    getch();
+    refresh_screen();
+    get_single_char_input();
     return;
 }
 
@@ -166,20 +165,20 @@ void launch(void)
     {
         draw_map(current_system);
         draw_no_fuel(10, 10);
-        getch();
+        get_single_char_input();
         return;
     }
     
     int fuel_usage;
     int select = current_system;
     int input;
-    while(true)
+    while(1)
     {
         draw_map(select);
         fuel_usage = draw_launch_menu(2, 19, select);
-        refresh();
+        refresh_screen();
         
-        input = getch();
+        input = get_single_char_input();
         
         if(input == 27 || input == 'X' || input == 'x')
         {
@@ -199,7 +198,7 @@ void launch(void)
             if(select == NUM_OF_STARS)
                 select = 0;
         }
-        if(input == '\n' || input == KEY_ENTER || input == '\r')// '\n works on my machine but the others are
+        if(input == '\n' || input == FTRV_ENTER || input == '\r')// '\n works on my machine but the others are
             // here in case it works on others
         {
             if(player_ship.fuel >= fuel_usage)
@@ -209,7 +208,7 @@ void launch(void)
                 return;
             } else {
                 draw_not_enough_fuel(15, 10);
-                getch();
+                get_single_char_input();
             }
             
         }
@@ -220,12 +219,12 @@ void launch(void)
 void pause_menu() // I'll rename this later, I'm sure
 {
     draw_pause_menu(34, 4);
-    refresh();
+    refresh_screen();
     
-    while(true)
+    while(1)
     {
         int input; // c89 purists fuck you
-        input = getch();
+        input = get_single_char_input();
         switch(input)
         {
             case 'x':
@@ -235,7 +234,7 @@ void pause_menu() // I'll rename this later, I'm sure
                 break;
             case 'Q':
             case 'q':
-                endwin();
+                tear_down();
                 exit(0);
                 break;
             case 's':

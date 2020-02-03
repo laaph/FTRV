@@ -11,7 +11,6 @@
 // I will save that task for when I am procrastinating.
 
 #include <stdlib.h>
-#include <ncurses.h>
 #include <signal.h>
 #include <string.h>
 #include <stdio.h>
@@ -24,12 +23,6 @@
 #include "loop.h"
 
 void new_game(void); // Even this might need to go in to loop.c
-
-static void finish(int a)
-{
-    endwin();
-    exit(0);
-}
 
 int main(int argc, char * argv[])
 {
@@ -64,7 +57,7 @@ int main(int argc, char * argv[])
     
     while(1)
     {
-        int c = getch();
+        int c = get_single_char_input();
         if(c == 'n' || c == 'N')
         {
             zoom_spaceship();
@@ -72,7 +65,7 @@ int main(int argc, char * argv[])
         }
         if(c == 'q' || c == 'Q')
         {
-            endwin();
+            tear_down();
             exit(0);
         }
     }
@@ -103,7 +96,7 @@ void new_game()
     
     main_loop();
     
-    endwin();
+    tear_down();
     exit(0);
 }
 

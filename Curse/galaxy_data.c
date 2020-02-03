@@ -7,7 +7,6 @@
 //
 
 #include <string.h>
-#include <ncurses.h>
 #include <stdlib.h>
 
 #include "galaxy_data.h"

@@ -18,6 +18,13 @@
 #include "wchar.h"
 #include "galaxy_data.h"
 
+// So I planned to scrape out the guts and make a shim between ncurses or bearlibterm.
+// I think drawing.* was meant to be that shim. There is quite a bit here that is
+// irrelevent.
+
+// We will probably need to share other keys like this
+int FTRV_ENTER = KEY_ENTER;
+
 // Putting this here because it has to go somewhere and it's pictures! Yeah.
 int spaceshipsizey = 13;
 int spaceshipsizex = 30;
@@ -457,4 +464,16 @@ void zoom_spaceship()
         addch(' ');
         refresh();
     }
+}
+
+int get_single_char_input(void){
+    int a = getch();
+    return a;
+}
+
+void refresh_screen(void){
+    refresh();
+}
+void tear_down(void){
+    endwin();
 }

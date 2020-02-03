@@ -9,15 +9,15 @@
 #ifndef Curse_loop_h
 #define Curse_loop_h
 
-struct character_info random_character();
-struct ship_info setup_ship();
-void main_loop();
-void pause_menu();
-void launch();
-void unimplemented();
-void dock();
-void refuel();
-void upgrade_ship();
+struct character_info random_character(void);
+struct ship_info setup_ship(void);
+void main_loop(void);
+void pause_menu(void);
+void launch(void);
+void unimplemented(int x, int y);
+void dock(void);
+void refuel(void);
+void upgrade_ship(void);
 
 
 #endif

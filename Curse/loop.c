@@ -156,7 +156,7 @@ void unimplemented(int x, int y)
     return;
 }
 
-void launch()
+void launch(void)
 {
     // This will be hard eventually, as we have to make a map that I haven't done
     // yet, and figure out how to encode the information.  However, for now, I'll

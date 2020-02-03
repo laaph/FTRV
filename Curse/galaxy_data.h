@@ -9,8 +9,8 @@
 #ifndef Curse_galaxy_data_h
 #define Curse_galaxy_data_h
 
-void galaxy_setup();
-struct planet_info setup_planet();
+void galaxy_setup(void);
+struct planet_info setup_planet(int planet_num);
 
 enum planet_services
 {

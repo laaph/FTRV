@@ -9,7 +9,7 @@
 #ifndef Curse_utils_h
 #define Curse_utils_h
 
-char * randomname();
+char * randomname(void);
 char * starname(int system_number);
 
 
